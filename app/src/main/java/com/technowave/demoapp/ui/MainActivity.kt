@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private val viewModel: MainViewModel by viewModels()
+    val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
     lateinit var connector:Connector
     var result= MutableLiveData<String>()
@@ -27,10 +27,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnMain.setOnClickListener {
-
-
-        }
 
 
     }
