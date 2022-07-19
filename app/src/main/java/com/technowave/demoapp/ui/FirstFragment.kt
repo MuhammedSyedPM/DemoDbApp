@@ -1,5 +1,6 @@
 package com.technowave.demoapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,12 +11,15 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import com.technowave.demoapp.R
 import com.technowave.demoapp.databinding.FirstFragmentBinding
+import com.technowave.demoapp.service.HelloService
 import com.technowave.demoapp.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 
@@ -34,6 +38,8 @@ class FirstFragment : Fragment(R.layout.first_fragment) {
     }
 
     private fun setupFragment() {
+
+
        /* lifecycleScope.launchWhenCreated {
             viewModel.latestNews.collect {
                 Log.d("Linoop onCreated",it.toString())
@@ -59,8 +65,20 @@ class FirstFragment : Fragment(R.layout.first_fragment) {
 
         lifecycleScope.launchWhenCreated {
         viewModel.sharedFlowToast.collect {
-            context?.showToast(it.toString())
+          //  context?.showToast(it.toString())
         }}
+
+        lifecycleScope.launchWhenCreated {
+            HelloService().sateFlowData.collect {
+                withContext(Dispatchers.Main) {
+                   // context?.showToast("${it.toString()}")
+                }
+            }}
+
+        binding.etText.setOnClickListener {
+            showpopup()
+        }
+
 
         binding.btnFirst.setOnClickListener {
            //viewModel.toast(1)
@@ -73,9 +91,17 @@ class FirstFragment : Fragment(R.layout.first_fragment) {
         }
     }
 
+    private fun showpopup() {
+        //
+    }
+
     private fun goToSecond() {
+
         val directions = FirstFragmentDirections.actionFirstFragmentToSecondFragment()
         view?.findNavController()?.navigate(directions)
     }
+
+
+
 
 }

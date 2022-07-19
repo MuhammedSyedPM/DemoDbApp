@@ -28,6 +28,9 @@ class MainViewModel @Inject constructor(app: Application, private val repo: Main
    private val _sharedFlowToast= MutableSharedFlow<String>()
     val sharedFlowToast =_sharedFlowToast.asSharedFlow()
 
+    private val _sharedFlowToastService= MutableSharedFlow<String>()
+    val sharedFlowToastService =_sharedFlowToastService.asSharedFlow()
+
 
         val latestNews: Flow<DemoTable> = flow<DemoTable> {
         var id = 0
@@ -73,6 +76,9 @@ class MainViewModel @Inject constructor(app: Application, private val repo: Main
         else
        _sharedFlowToast.emit("Error")
     }
+
+
+
 
 
 

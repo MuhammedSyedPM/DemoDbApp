@@ -8,7 +8,7 @@ fun main() {
 
 
 
-    val name:String by MyDelegate("syed")
+    val name:String by MyDelegate("Syed")
     println(name)
 
 }

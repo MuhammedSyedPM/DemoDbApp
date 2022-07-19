@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        Intent(this, HelloService::class.java).also { intent ->
+            startService(intent)
+        }
 
     }
 }

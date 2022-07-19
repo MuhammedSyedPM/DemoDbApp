@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/checkFragment">
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.technowave.demoapp.ui.FirstFragment"
@@ -16,4 +16,8 @@
         android:id="@+id/secondFragment"
         android:name="com.technowave.demoapp.ui.SecondFragment"
         android:label="SecondFragment" />
+    <fragment
+        android:id="@+id/checkFragment"
+        android:name="com.technowave.demoapp.ui.CheckFragment"
+        android:label="CheckFragment" />
 </navigation>

@@ -10,6 +10,15 @@
     android:layout_marginBottom="100dp"
     android:layout_height="match_parent" >
 
+
+    <EditText
+        android:id="@+id/etText"
+        android:drawableRight="@drawable/ic_baseline_arrow_drop_down_circle_24"
+        android:padding="15dp"
+        android:background="@drawable/round_corner_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:id="@+id/btnFirst"
         android:layout_width="wrap_content"

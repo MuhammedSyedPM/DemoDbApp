@@ -4,15 +4,22 @@ import android.app.Service
 import android.content.Intent
 import android.os.*
 import android.os.Process.THREAD_PRIORITY_BACKGROUND
+import android.util.Log
 import android.widget.Toast
 import androidx.room.RoomDatabase
 import com.technowave.demoapp.db.DataDao
 import com.technowave.demoapp.db.DataDatabase
+import com.technowave.demoapp.model.DemoTable
 import com.technowave.demoapp.repository.MainRepo
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.scopes.ServiceScoped
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,6 +31,10 @@ class HelloService : Service() {
     @Inject
     lateinit var repo: MainRepo
 
+    private val _mutableStateFlow= MutableStateFlow<String>("")
+    val sateFlowData: StateFlow<String> = _mutableStateFlow
+
+
 
 
     private inner class ServiceHandler(looper: Looper) : Handler(looper) {
@@ -33,10 +44,20 @@ class HelloService : Service() {
             // Normally we would do some work here, like download a file.
             // For our sample, we just sleep for 5 seconds.
             try {
-                Thread.sleep(5000)
-                CoroutineScope(Dispatchers.IO).launch{
-                   // repo.add()
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    Log.d("MSD","working")
+                    var i=0
+                     while (i in 1..5) {
+                         Log.d("MSD","working true")
+                         delay(1000)
+                         _mutableStateFlow.emit("cool ${i++}")
+                     }
+                    // repo.add()
                 }
+                //Thread.sleep(5000)
+
+
 
 
             } catch (e: InterruptedException) {
@@ -47,7 +68,7 @@ class HelloService : Service() {
             // Stop the service using the startId, so that we don't stop
             // the service in the middle of handling another job
 
-            stopSelf(msg.arg1)
+          //  stopSelf(msg.arg1)
         }
     }
 
@@ -73,7 +94,7 @@ class HelloService : Service() {
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show()
 
 
 
