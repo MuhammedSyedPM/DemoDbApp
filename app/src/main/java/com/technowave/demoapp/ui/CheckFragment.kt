@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.technowave.demoapp.R
 import com.technowave.demoapp.databinding.SecondFragmentBinding
+import com.technowave.demoapp.utils.Constants
+import com.technowave.demoapp.utils.MyClass.Companion.myData
 import com.technowave.demoapp.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -24,6 +26,7 @@ class CheckFragment : Fragment(R.layout.second_fragment) {
 
         viewModel = (activity as MainActivity).viewModel
 
+        myData
 
 
     }

@@ -63,10 +63,7 @@ class FirstFragment : Fragment(R.layout.first_fragment) {
         }
 
 
-        lifecycleScope.launchWhenCreated {
-        viewModel.sharedFlowToast.collect {
-          //  context?.showToast(it.toString())
-        }}
+
 
         lifecycleScope.launchWhenCreated {
             HelloService().sateFlowData.collect {

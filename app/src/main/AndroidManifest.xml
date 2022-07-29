@@ -15,7 +15,7 @@
         android:theme="@style/Theme.DemoApp"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".activities.FirstActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ui.MainActivity"
+            android:exported="true"/>
+
+        <activity android:name=".activities.SecondActivity"
+            android:exported="true"/>
+
+        <activity android:name=".activities.ThirdActivity"
+            android:exported="true"/>
+
+        <activity android:name=".activities.ForthActivity"
+            android:exported="true"/>
 
         <service android:name=".service.HelloService" />
         <service android:name=".service.MessengerService" />
